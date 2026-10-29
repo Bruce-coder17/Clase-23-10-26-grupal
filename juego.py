@@ -17,3 +17,34 @@ def evaluar_temperatura(secreto, intento):
     return "⛅ Tibio, aún te falta un poco."
   else:
     return "❄️ ¡Muy frío! Estás muy lejos."
+
+def jugar():
+    secreto = random.randint(1, 100)
+    intentos = 0
+
+    print("=========================================")
+    print("🎮 ¡Adivina el número secreto (1 al 100)! 🎮")
+    print("=========================================")
+
+    while True:
+        entrada = input("\nIntroduce tu número: ")
+
+        # Validar que sea un número válido
+        if not entrada.isdigit():
+            print("⚠️ Por favor, ingresa solo números enteros.")
+            continue
+
+        intento = int(entrada)
+        intentos += 1
+
+        # Llamamos a la lógica del Integrante 1
+        mensaje = evaluar_temperatura(secreto, intento)
+        print(mensaje)
+
+        if intento == secreto:
+            print(f"✨ ¡Adivinaste en {intentos} intentos! ✨")
+            break
+
+# Ejecutar el juego
+if __name__ == "__main__":
+    jugar()
